@@ -1,0 +1,83 @@
+/* Gerais */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans';
+}
+
+body {
+    background-color: #202022;
+     color: #dfdfe9;
+}
+
+/* Nav */
+header {
+    border-bottom: 1px solid #dfdfe9;
+    padding: 1rem 2rem;
+    color: #dfdfe9;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+#search-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#search-input {
+    background-color: #3f3f43;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    padding: 10px;
+    width: 26.5rem;
+}
+
+#search-input::placeholder {
+    color: #ddd;
+}
+
+#export-notes {
+    background-color: #202022;
+    color: #dfdfe9;
+    border: 1px solid #dfdfe9;
+    border-radius: 4px;
+    padding: 5px 1rem;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+#export-notes:hover {
+    background-color: #dfdfe9;
+    color: #3f3f43;
+}
+
+/* NOVA NOTA */
+#add-note-container {
+    display: flex;
+    width: 26.5rem;
+    margin: 1rem auto 0;
+    gap: 0.3rem;
+}
+
+#add-note-container input,
+#add-note-container button {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#add-note-container input {
+    flex: 1;
+    background-color: transparent;
+    border: 1px solid #3f3f43;   
+    color: #dfdfe9;
+}
+
+#add-note-container button {
+    cursor: pointer;
+    background-color: #3f3f43;
+    color: #dfdfe9;
+}
