@@ -81,3 +81,71 @@ header {
     background-color: #3f3f43;
     color: #dfdfe9;
 }
+
+/* NOTAS */
+#notes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.note {
+    min-height: 200px;
+    padding: 1rem;
+    border: 1px solid #dfdfe9;
+    background-color: transparent;
+    border-radius: 11px;
+    color: #dfdfe9;
+    position: relative;
+}
+
+.note textarea {
+    background-color: transparent;
+    resize: none;
+    color: #dfdfe9;
+    border: none;
+    height: 100%;
+    outline: none;
+}
+
+.note:hover > i {
+    opacity: 1;
+}
+
+.note .bi-pin {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    font-size: 1.2rem;
+    background-color: #3f3f43;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.note .bi-x-lg, 
+.note .bi-file-earmark-plus {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 0.9rem;
+    padding: 5px;
+    transition: 0.3s;
+    color: #58585c;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.note .bi-file-earmark-plus {
+    top: 40px;
+}
+
+.note .bi-x-lg:hover,
+.note .bi-file-earmark-plus:hover {
+    color: #dfdfe9;
+}
+
+.note.fixed {
+    background-color: #58585c;
+}
