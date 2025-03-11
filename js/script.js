@@ -16,7 +16,7 @@ function addNote() {
         fixed: false,
     }
 
-    const noteElement = creatNote(noteObject.id, noteInput.content)
+    const noteElement = creatNote(noteObject.id, noteInput.value)
 
     notesContainer.appendChild(noteElement);
 
