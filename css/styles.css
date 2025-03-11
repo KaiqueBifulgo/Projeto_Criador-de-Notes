@@ -147,5 +147,11 @@ header {
 }
 
 .note.fixed {
-    background-color: #58585c;
+    background-color: #259986;
+    color: #e1e1eb;
+}
+
+.note.fixed .bi-pin {
+    background-color: #dfdfe9;
+    color: #202022
 }
