@@ -22,12 +22,12 @@ function addNote() {
     const notes = getNotes();
 
     const noteObject = {
-        id: generateId,
+        id: generateId(),
         content: noteInput.value,
         fixed: false,
     }
 
-    const noteElement = creatNote(noteObject.id, noteInput.value)
+    const noteElement = createNote(noteObject.id, noteInput.value)
 
     notesContainer.appendChild(noteElement);
 
@@ -42,7 +42,7 @@ function generateId () {
     return Math.floor(Math.random() * 5000);
 }
 
-function creatNote(id, content, fixed) {
+function createNote(id, content, fixed) {
 
     const element = document.createElement("div");
 
@@ -61,7 +61,7 @@ function creatNote(id, content, fixed) {
 }
 
 // LOCALSTORAGE
-function getNotes(notes) {
+function getNotes() {
     const notes = JSON.parse(localStorage.getItem("notes") || "[]");
 
     return notes;
