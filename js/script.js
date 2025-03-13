@@ -10,7 +10,7 @@ const addNoteBtn = document.querySelector(".add-note");
 // FUNÇÕES
 function showNotes() {
     getNotes().forEach((note) => {
-        const noteElement = creatNote(note.id, note.content, note.fixed)
+        const noteElement = createNote(note.id, note.content, note.fixed)
 
         notesContainer.appendChild(noteElement)
     })
@@ -55,6 +55,12 @@ function createNote(id, content, fixed) {
     textArea.placeholder = "Adicione uma nota...";
 
     element.appendChild(textArea);
+
+    const fixedIcon = document.createElement("i");
+
+    fixedIcon.classList.add(...["bi", "bi-pin"]);
+
+    element.appendChild(fixedIcon);
 
     return element;
 
