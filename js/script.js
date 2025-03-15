@@ -9,11 +9,18 @@ const addNoteBtn = document.querySelector(".add-note");
 
 // FUNÇÕES
 function showNotes() {
+    cleanNotes();
+
+
     getNotes().forEach((note) => {
         const noteElement = createNote(note.id, note.content, note.fixed)
 
         notesContainer.appendChild(noteElement)
     })
+}
+
+function cleanNotes() {
+    notesContainer.replaceChildren([]);
 }
 
 
@@ -51,7 +58,7 @@ function createNote(id, content, fixed) {
     const textArea = document.createElement("textarea");
 
     textArea.value = content;
-
+    
     textArea.placeholder = "Adicione uma nota...";
 
     element.appendChild(textArea);
@@ -61,16 +68,42 @@ function createNote(id, content, fixed) {
     fixedIcon.classList.add(...["bi", "bi-pin"]);
 
     element.appendChild(fixedIcon);
+    
+
+    if (fixed) {
+        element.classList.add("fixed");
+    }
+
+
+    // EVENTOS DO ELEMENTO
+    element.querySelector(".bi-pin").addEventListener("click", () => {
+        toggleFixNote(id);
+    })
 
     return element;
 
+
+}
+
+function toggleFixNote(id) {
+    const notes = getNotes();
+
+    const targetNote = notes.filter((note) => note.id === id)[0];
+
+    targetNote.fixed = !targetNote.fixed;
+
+    saveNotes(notes);
+
+    showNotes();
 }
 
 // LOCALSTORAGE
 function getNotes() {
     const notes = JSON.parse(localStorage.getItem("notes") || "[]");
 
-    return notes;
+    const ordemNotes = notes.sort((a, b) => (a.fixed > b.fixed ? -1 : 1));
+
+    return ordemNotes;
 }
 
 
