@@ -63,11 +63,26 @@ function createNote(id, content, fixed) {
 
     element.appendChild(textArea);
 
+    // BOTAO FIXAR
     const fixedIcon = document.createElement("i");
 
     fixedIcon.classList.add(...["bi", "bi-pin"]);
 
     element.appendChild(fixedIcon);
+
+    // BOTAO DELETE
+    const deleteIcon = document.createElement("i");
+
+    deleteIcon.classList.add(...["bi", "bi-x-lg"]);
+
+    element.appendChild(deleteIcon);
+
+    // BOTAO DUPLICAR
+    const duplicateIcon = document.createElement("i");
+
+    duplicateIcon.classList.add(...["bi", "bi-file-earmark-plus"])
+
+    element.appendChild(duplicateIcon);
     
 
     if (fixed) {
@@ -76,16 +91,30 @@ function createNote(id, content, fixed) {
 
 
     // EVENTOS DO ELEMENTO
+
+    // EVENTO DE FIXAR
     element.querySelector(".bi-pin").addEventListener("click", () => {
-        toggleFixNote(id);
+        fixNote(id);
     })
+
+    // EVENTO DE DELETAR
+    element.querySelector(".bi-x-lg").addEventListener("click", () => {
+        deleteNote(id, element);
+    })
+
+    // EVENTO DE DUPLICAR
+    element.querySelector(".bi-file-earmark-plus").addEventListener("click",() => {
+        duplicateNote(id)
+    } )
+
 
     return element;
 
 
 }
 
-function toggleFixNote(id) {
+// FUNÇÃO FIXAR NOTA
+function fixNote(id) {
     const notes = getNotes();
 
     const targetNote = notes.filter((note) => note.id === id)[0];
@@ -95,6 +124,36 @@ function toggleFixNote(id) {
     saveNotes(notes);
 
     showNotes();
+}
+
+// FUNÇÃO DELETAR NOTA
+function deleteNote(id, element) {
+    const notes = getNotes().filter((note) => note.id !== id);
+
+    saveNotes(notes);
+
+    notesContainer.removeChild(element);
+}
+
+// FUNÇÃO DUPLICAR NOTA
+function duplicateNote(id) {
+    const notes = getNotes();
+
+    const targetNote = notes.filter((note) => note.id === id)[0];
+
+    const noteObject = {
+        id: generateId(),
+        content: targetNote.content,
+        fixed: false,
+    } 
+    
+    const noteElement = createNote(noteObject.id, noteObject.content, noteObject.fixed);
+
+    notesContainer.appendChild(noteElement);
+
+    notes.push(noteObject);
+
+    saveNotes(notes);
 }
 
 // LOCALSTORAGE
