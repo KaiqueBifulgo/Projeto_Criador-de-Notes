@@ -158,3 +158,36 @@ header {
     background-color: #edf2f1;
     color: #06060d;
 }
+
+
+/* RESPONSIVIDADE */
+@media (max-width: 450px) {
+
+/* NAV */
+    
+    header {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    #search-container{
+        width: 100%;
+    }
+
+    #search-input {
+        width: 100%;
+    }
+
+/* MAIN */
+
+    #add-note-container {
+        width: 100%;
+        padding: 0 2rem;
+    }
+
+    #notes-container {
+        grid-template-columns: repeat(auto-fill, 100%);
+    }
+
+}
